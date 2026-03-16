@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeopardy: Time Machine Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Jeopardy!</h1>
+        <div id="game-status" style="display: none;">
+            <div class="score-display">$<span id="score">0</span></div>
+        </div>
+    </header>
+
+    <main class="setup-container" id="setup-screen">
+        <h2>Choose Your Era</h2>
+        <p>Select a time range to play with questions from those years.</p>
+        
+        <div class="range-selectors">
+            <div class="selector-group">
+                <label>Start Year</label>
+                <select id="start-year">
+                    <!-- Populated by JS -->
+                </select>
+            </div>
+            <div class="selector-group">
+                <label>End Year</label>
+                <select id="end-year">
+                    <!-- Populated by JS -->
+                </select>
+            </div>
+        </div>
+
+        <button class="btn-primary" id="start-game-btn">Start Game</button>
+        <p id="loading-txt" style="display: none; margin-top: 1rem; color: var(--jeopardy-gold);">Loading questions...</p>
+    </main>
+
+    <div class="game-container" id="game-board-container">
+        <div class="board" id="main-board">
+            <!-- Populated by JS -->
+        </div>
+        <div id="controls" style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
+             <button class="btn-primary" id="next-round-btn" style="display: none;">Next Round</button>
+        </div>
+    </div>
+
+    <!-- Clue Modal -->
+    <div class="modal" id="clue-modal">
+        <div class="clue-display">
+            <div id="modal-category" style="color: var(--jeopardy-gold); font-weight: bold; margin-bottom: 1rem; text-transform: uppercase;">CATEGORY</div>
+            <div class="clue-text" id="active-clue">THE CONTENT OF THE CLUE GOES HERE.</div>
+            <div class="answer-text" id="active-answer" style="border-top: 1px solid var(--glass-accent); padding-top: 1rem;">
+                <div style="font-size: 0.9rem; text-transform: uppercase; color: var(--jeopardy-gold);">The Clue:</div>
+                <div id="active-answer-text">What is the Answer?</div>
+            </div>
+            
+            <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn-primary btn-pass" id="pass-btn">Pass</button>
+                <button class="btn-primary btn-guess" id="guess-btn">Guess</button>
+                
+                <button class="btn-primary btn-incorrect" id="incorrect-btn" style="display: none;">Incorrect</button>
+                <button class="btn-primary btn-correct" id="correct-btn" style="display: none;">Correct</button>
+                
+                <button class="btn-primary" id="close-clue-btn" style="display: none; background: #2ecc71; color: white;">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
